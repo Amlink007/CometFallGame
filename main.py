@@ -8,10 +8,13 @@ clock = pygame.time.Clock()
 FPS = 60
 
 
-screen = pygame.display.set_mode((1080, 720))
+screen = pygame.display.set_mode((1080, 800))
 
 pygame.display.set_caption("Comet fall Game")
-pygame.display.set_icon("Comet Fall Game/assets/meteorite.png")
+
+
+icon = pygame.image.load("Comet Fall Game/assets/meteor.jpg")
+pygame.display.set_icon(icon)
 
 background = pygame.image.load("Comet Fall Game/assets/bg.jpg")
 
@@ -46,6 +49,7 @@ while running:
 
         if event.type == pygame.QUIT:
             running = False
+            print("[Fermeture de la fenetre]")
             pygame.quit()
 
         elif event.type == pygame.KEYDOWN:
@@ -61,10 +65,10 @@ while running:
             game.pressed[event.key] = False
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            
-            if play_button_rect.collidepoint(event.pos):
-                game.start()
-                game.sound_manager.play("click")
+            if game.is_playing is False:
+                if play_button_rect.collidepoint(event.pos):
+                    game.start()
+                    game.sound_manager.play("click")
 
     
     clock.tick(FPS)
