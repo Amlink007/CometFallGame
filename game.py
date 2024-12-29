@@ -4,7 +4,7 @@ from player import Player
 from monster import Mummy
 from monster import Alien
 from sounds import SoundManager
-from comet_event import CometFallEvent
+from come_event import CometFallEvent
 
 class Game:
 
